@@ -55,7 +55,7 @@ g = urllib2.urlopen('http://demo.signalk.org/signalk/v1/api/')
 signalkdata = json.loads(g.read())
 
 #Break out the information we need from the JSON string
-Name = "Black Dog"
+Name = signalkdata['vessels']['urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d']['name']
 UpdateTime = signalkdata['sources']['nmeaFromFile']['II']['sentences']['MWV']
 MWVV = str(round(signalkdata['vessels']['urn:mrn:signalk:uuid:c0d79334-4e25-4245-8892-54e8ccc8021d']['environment']['wind']['speedTrue']['value']))
 #MWVV = str(34)
@@ -159,7 +159,7 @@ draw.rectangle(((x-2),(y-1),(x+w+2),(y+h+3)),inky_display.WHITE,5)
 #draw the MWVA inside the dial
 draw.text((x,y), MWVAtext, inky_display.BLACK, font)
 
-#draw scale to suit x7.2 multiplier
+#draw scale
 label = "0"
 w, h = font_small.getsize(label)
 x = (73) - (w / 2)
